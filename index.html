@@ -1,8 +1,3 @@
-<?php
-include("connection.php");
-session_start();
-
-?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -27,10 +22,10 @@ session_start();
     <body>
 
     <div class="limiter">
-            <main id="week-form"  action="#" method="POST">
+            <main id="week-form"  action="api.php" method="POST">
         <div class="container-login100">
             <div class="wrap-login100">
-                <form class="login100-form validate-form" action="#" method="POST">
+                <form class="login100-form validate-form" action="api.php" method="POST">
                     <span class="login100-form-title p-b-48">
                         <header>
                 <h1 id="title">Yoga Class Registration</h1>
@@ -101,51 +96,50 @@ session_start();
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
 
+    <!-- Add this script at the end of your HTML file, before the closing </body> tag -->
+<script>
+    $(document).ready(function () {
+    $("#week-form").submit(function (event) {
+        event.preventDefault();
+
+        // Collect form data
+        var formData = {
+            fname: $("input[name='fname']").val(),
+            lname: $("input[name='lname']").val(),
+            email: $("input[name='email']").val(),
+            gender: $("select[name='gender']").val(),
+            age: $("input[name='age']").val(),
+            dob: $("input[name='dob']").val()
+        };
+
+        // Log formData for debugging
+        console.log(formData);
+
+        // Submit data as JSON using AJAX
+        $.ajax({
+            type: "POST",
+            url: "api.php",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (response) {
+                alert("Submitted Successfully!!!!");
+                window.location = "payment.html";
+            },
+            error: function (xhr, status, error) {
+                alert("Failed to Submit: " + xhr.responseText);
+            }
+        });
+    });
+});
+
+
+
+</script>
+
+
     </body>
     </html>
 
-<?php
-if(isset($_POST['submit']))
-{
-
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $email = $_POST['email'];
-    $gender = $_POST['gender'];
-    $age = $_POST['age'];
-    $dob= $_POST['dob'];
-    $sql = "SELECT * from trainee where email = '$email'";  
-        $result = mysqli_query($conn, $sql);  
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
-        $count = mysqli_num_rows($result);  
-        $_SESSION['email']= $row['email'];
-
-    if($count == 0){  
-    $query= "INSERT INTO trainee VALUES('$fname','$lname', '$email', '$gender', '$age', '$dob' )";
-    $data = mysqli_query($conn, $query);
-    if($data)
-    {
-        echo '<script type ="text/JavaScript">';
-        echo 'alert(" Submitted Successfully!!!! ")';
-        echo '</script>';
-        echo '<script> window.location="payment.php"; </script>';
-    }
-    else
-    {
-        echo '<script type ="text/JavaScript">';
-        echo 'alert("Failed to Submit Successfully!!!! ")';
-        echo '</script>';
-    }
-    }
-    else{
-        echo '<script type ="text/JavaScript">';
-        echo 'alert("You are already registered")';
-        echo '</script>';
-        echo '<script> window.location="payment.php"; </script>';
-    }
-    
-
-}
 
 
-?>
+
