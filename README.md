@@ -15,7 +15,8 @@ This repository contains a simple web application for yoga class registration. T
 
 ## ER Diagram
 
-![ER Diagram](css/ER-Diagram-Yoga.png)
+![ER-Diagram-Yoga](https://github.com/abhi-sec/Yoga-Pro/assets/76206070/801d1643-478d-4e38-ba5d-784a848d28fb)
+
 
 ## Getting Started
 
