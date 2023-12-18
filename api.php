@@ -25,11 +25,11 @@ function handleRegistration() {
     $fname = mysqli_real_escape_string($conn, $data['fname'] ?? '');
     $lname = mysqli_real_escape_string($conn, $data['lname'] ?? '');
     $email = mysqli_real_escape_string($conn, $data['email'] ?? '');
-    $gender = mysqli_real_escape_string($conn, $data['gender'] ?? '');
+    $batch = mysqli_real_escape_string($conn, $data['batch'] ?? '');
     $age = mysqli_real_escape_string($conn, $data['age'] ?? '');
     $dob = mysqli_real_escape_string($conn, $data['dob'] ?? '');
 
-    if (empty($fname) || empty($lname) || empty($email) || empty($gender) || empty($age) || empty($dob)) {
+    if (empty($fname) || empty($lname) || empty($email) || empty($batch) || empty($age) || empty($dob)) {
         http_response_code(400); // Bad Request
         echo json_encode(["error" => "Incomplete data"]);
         return;
@@ -42,9 +42,9 @@ function handleRegistration() {
 
     if ($count == 0) {
         // Perform registration using prepared statement
-        $query = "INSERT INTO trainee (fname, lname, email, gender, age, dob) VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO trainee (fname, lname, email, batch, age, dob) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "ssssss", $fname, $lname, $email, $gender, $age, $dob);
+        mysqli_stmt_bind_param($stmt, "ssssss", $fname, $lname, $email, $batch, $age, $dob);
 
         if (mysqli_stmt_execute($stmt)) {
             http_response_code(201); // Created

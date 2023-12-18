@@ -47,14 +47,15 @@
                         <span class="focus-input100" data-placeholder="Email"></span>
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Please select your gender">
-                        <select class="input100" name="gender" required>
+                    <div class="wrap-input100 validate-input" data-validate="Please select your Batch">
+                        <select class="input100" name="batch" required>
                             <option value="" disabled selected></option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
+                            <option value="6-7AM">6-7AM</option>
+                            <option value="7-8AM">7-8AM</option>
+                            <option value="8-9AM">8-9AM</option>
+                            <option value="5-6PM">5-6PM</option>
                         </select>
-                        <span class="focus-input100" data-placeholder="Gender"></span>
+                        <span class="focus-input100" data-placeholder="Batch"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Please enter a valid age (18-65)">
@@ -107,7 +108,7 @@
             fname: $("input[name='fname']").val(),
             lname: $("input[name='lname']").val(),
             email: $("input[name='email']").val(),
-            gender: $("select[name='gender']").val(),
+            batch: $("select[name='batch']").val(),
             age: $("input[name='age']").val(),
             dob: $("input[name='dob']").val()
         };
