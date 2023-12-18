@@ -15,7 +15,7 @@ This repository contains a simple web application for yoga class registration. T
 
 ## ER Diagram
 
-![ER Diagram]([images/your-er-diagram.png](https://drive.google.com/file/d/1SqXrqSNZyDbFQFr6uOHFn5KkRIYkrvm0/view?usp=sharing))
+![ER Diagram]((https://drive.google.com/file/d/1SqXrqSNZyDbFQFr6uOHFn5KkRIYkrvm0/view?usp=sharing))
 
 ## Getting Started
 
